@@ -1,4 +1,4 @@
 posxy=1403,180;
-clik=s;
-testo=salto;
+clik=d;
+testo=abcdefg;
 pause=1000;

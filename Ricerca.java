@@ -5,18 +5,31 @@ import java.awt.event.KeyEvent;
 import java.awt.AWTException;
 public class Ricerca {
 
-    public void eseguiRicerca(Robot robot, int initialX, int initialY, String searchText, int pausa) {
+    private static  int clikSinitro = InputEvent.BUTTON1_DOWN_MASK;
+
+
+
+    public void eseguiRicerca(Robot robot, int initialX, int initialY, String searchText, int pausa, String clik) {
         try {
             // Move mouse to initial position
+if (clik.equals("s")) {
+    clikSinitro = InputEvent.BUTTON1_DOWN_MASK;
+} else if (clik.equals("d")) {
+    clikSinitro = InputEvent.BUTTON3_DOWN_MASK;
+} else {
+    throw new IllegalArgumentException("Il valore di clik deve essere 's' o 'd'");
+    
+}
+
             System.out.println("Spostando il mouse alla posizione iniziale (" + initialX + ", " + initialY + ")");
             robot.mouseMove(initialX, initialY);
             robot.delay(pausa);
     
             // Click at initial position
             System.out.println("Cliccando il mouse nella posizione (" + initialX + ", " + initialY + ")");
-            robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+            robot.mousePress(clikSinitro);
             robot.delay(pausa); // Delay to ensure click is registered
-            robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+            robot.mouseRelease(clikSinitro);
             robot.delay(pausa);
     
             // Type the search text

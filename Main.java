@@ -33,9 +33,10 @@ public class Main {
 int posy = Integer.parseInt(datiMap.get("posy").replaceAll(";", "").trim()); // Remove semicolon and trim spaces before parsing
 int pause = Integer.parseInt(datiMap.getOrDefault("pause", "1000").replaceAll(";", "").trim()); // Remove semicolon and trim spaces before parsing
 String testo = datiMap.get("testo"); // Retrieve 'testo' // Default value is 1000
+String clik = datiMap.get("clik"); // Retrieve 'clik' // Default value is 1000
             
             // Now use these values in your method call
-            ricercaGoogle.eseguiRicerca(robot, posx, posy, testo, pause);
+            ricercaGoogle.eseguiRicerca(robot, posx, posy, testo, pause, clik);
 
             // Delay before next action
             robot.delay(6000);
