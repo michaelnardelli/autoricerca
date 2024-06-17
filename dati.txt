@@ -1,4 +1,4 @@
-posxy=200,100;
+posxy=1403,180;
 clik=s;
 testo=salto;
 pause=1000;

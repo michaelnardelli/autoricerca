@@ -16,14 +16,26 @@ public class Letturadati {
 
             while (myReader.hasNextLine()) {
                 String line = myReader.nextLine();
-                // Split line into key-value pairs
-                String[] pairs = line.split(";");
-                for (String pair : pairs) {
-                    // Split each pair by '=' to get key and value
-                    String[] keyValue = pair.split("=");
-                    if (keyValue.length == 2) { // Ensure there's a key and a value
-                        // Trim and store in HashMap
-                        datiMap.put(keyValue[0].trim(), keyValue[1].trim());
+                // Check if the line starts with "posxy="
+                if (line.startsWith("posxy=")) {
+                    // Extract the coordinates
+                    String coordinates = line.substring(line.indexOf('=') + 1);
+                    String[] parts = coordinates.split(",");
+                    if (parts.length == 2) {
+                        // Insert posx and posy into the HashMap
+                        datiMap.put("posx", parts[0].trim());
+                        datiMap.put("posy", parts[1].trim());
+                    }
+                } else {
+                    // Split line into key-value pairs for other data
+                    String[] pairs = line.split(";");
+                    for (String pair : pairs) {
+                        // Split each pair by '=' to get key and value
+                        String[] keyValue = pair.split("=");
+                        if (keyValue.length == 2) { // Ensure there's a key and a value
+                            // Trim and store in HashMap
+                            datiMap.put(keyValue[0].trim(), keyValue[1].trim());
+                        }
                     }
                 }
             }
@@ -34,30 +46,6 @@ public class Letturadati {
             e.printStackTrace();
         }
 
-        return datiMap;
-    }
-    public static int[] parsePosition(String input) {
-        // Step 1: Remove the prefix
-        String coordinates = input.substring(input.indexOf('=') + 1);
-        // Step 2: Split the string by comma
-        String[] parts = coordinates.split(",");
-        // Step 3: Parse and assign to posx and posy
-        int posx = Integer.parseInt(parts[0]);
-        int posy = Integer.parseInt(parts[1]);
-        // Return posx and posy
-        return new int[]{posx, posy};
-    }
-
-    public static void main(String[] args) {
-        String input = "posxy=200,100";
-        int[] positions = parsePosition(input);
-        System.out.println("posx: " + positions[0] + ", posy: " + positions[1]);
-    }
-}
-    
-    @Override
-    public String toString() {
-        // Use HashMap's toString method for representation
-        return datiMap.toString();
+        return datiMap; // Return the populated HashMap
     }
 }

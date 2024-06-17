@@ -5,29 +5,30 @@ import java.awt.event.KeyEvent;
 import java.awt.AWTException;
 public class Ricerca {
 
-    public void eseguiRicerca(Robot robot, int initialX, int initialY, String searchText, int finalX, int finalY) {
+    public void eseguiRicerca(Robot robot, int initialX, int initialY, String searchText, int pausa) {
         try {
             // Move mouse to initial position
             System.out.println("Spostando il mouse alla posizione iniziale (" + initialX + ", " + initialY + ")");
             robot.mouseMove(initialX, initialY);
-            robot.delay(1000);
+            robot.delay(pausa);
     
             // Click at initial position
             System.out.println("Cliccando il mouse nella posizione (" + initialX + ", " + initialY + ")");
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-            robot.delay(200); // Delay to ensure click is registered
+            robot.delay(pausa); // Delay to ensure click is registered
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-            robot.delay(1000);
+            robot.delay(pausa);
     
             // Type the search text
             System.out.println("Scrivendo il testo: " + searchText);
             typeString(robot, searchText);
-            robot.delay(1000);
-    
+            robot.delay(pausa);
+     int finalX=1548;
+     int finalY= 188;
             // Move mouse to final position
             System.out.println("Spostando il mouse alla nuova posizione (" + finalX + ", " + finalY + ")");
             robot.mouseMove(finalX, finalY);
-            robot.delay(1000);
+            robot.delay(pausa);
     
             // Click at final position
             System.out.println("Cliccando il mouse nella nuova posizione (" + finalX + ", " + finalY + ")");
