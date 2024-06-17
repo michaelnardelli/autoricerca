@@ -117,7 +117,7 @@ public class hello {
             robot.delay(200); // Ritardo per garantire che il clic sia registrato
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 
-
+robot.delay(1000);
             System.out.println("Spostando il mouse alla nuova posizione (" + ordinex + ", " + ordiney + ")");
             robot.mouseMove(ordinex, ordiney);
             robot.delay(1000);
