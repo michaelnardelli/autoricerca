@@ -4,9 +4,14 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
 
-public class hello {
+public class Main {
     public static void main(String[] args) {
+        Letturadati[] dati = new Letturadati[0];
+       
+        
+        
         try {
+            System.out.println(dati.toString());
             try (Scanner sc = new Scanner(System.in)) {
                 Robot robot = new Robot();
             
@@ -32,6 +37,7 @@ public class hello {
             e.printStackTrace();
         }
     }
+ 
     // Metodo per eseguire la ricerca
     public static void ricerca(Robot robot, int initialX, int initialY, String searchText, int finalX, int finalY) {
         try {

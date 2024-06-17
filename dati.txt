@@ -1,0 +1,4 @@
+posxy=200,100;
+clik=s;
+testo=salto;
+pause=1000;
