@@ -1,9 +1,10 @@
-package autoricerca.src.main.java.com.example;
+
+
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.awt.Point; // Import the Point class
+import org.bytedeco.opencv.opencv_core.Point; // Import the Point class from OpenCV
 
 public class Main {
 
@@ -35,12 +36,12 @@ public class Main {
             String clik = datiMap.get("clik"); // Retrieve 'clik' // Default value is 1000
 
             // Find the icon on the screen
-            IconFinder iconFinder = new IconFinder();
-            Point iconPosition = .findIcon("icon"); // Declare and initialize iconPosition
+            Trovaicona iconFinder = new Trovaicona();
+            Point iconPosition = Trovaicona.findIcon("icon.png"); // Declare and initialize iconPosition
             
             // Now use these values in your method call
-            int posx = iconPosition.x;
-            int posy = iconPosition.y;
+            int posx = iconPosition.x();
+            int posy = iconPosition.y();
             ricercaGoogle.eseguiRicerca(robot, posx, posy, testo, pause, clik);
 
             // Delay before next action

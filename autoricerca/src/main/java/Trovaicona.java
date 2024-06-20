@@ -1,4 +1,5 @@
-package autoricerca.src.main.java.com.example;
+
+
 import org.bytedeco.javacv.Java2DFrameConverter;
 import org.bytedeco.javacv.OpenCVFrameConverter;
 import org.bytedeco.opencv.global.opencv_core;
@@ -38,9 +39,11 @@ public class Trovaicona {
         opencv_imgproc.matchTemplate(screenMat, icon, result, TM_CCOEFF_NORMED);
 
         // Trova la posizione del migliore match
+        org.bytedeco.opencv.opencv_core.Point minVal = new org.bytedeco.opencv.opencv_core.Point();
+        org.bytedeco.opencv.opencv_core.Point maxVal = new org.bytedeco.opencv.opencv_core.Point();
         org.bytedeco.opencv.opencv_core.Point minLoc = new org.bytedeco.opencv.opencv_core.Point();
         org.bytedeco.opencv.opencv_core.Point maxLoc = new org.bytedeco.opencv.opencv_core.Point();
-        opencv_core.minMaxLoc(result, null, null, (org.bytedeco.opencv.opencv_core.Point) minLoc, (org.bytedeco.opencv.opencv_core.Point) maxLoc, null);
+        opencv_core.minMaxLoc(result, minVal, maxVal, minLoc, maxLoc, result);
 
         // Restituisce il punto del miglior match
         return maxLoc;
