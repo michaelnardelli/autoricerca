@@ -1,7 +1,9 @@
+package autoricerca.src.main.java.com.example;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.awt.Point; // Import the Point class
 
 public class Main {
 
@@ -18,7 +20,6 @@ public class Main {
             sc.nextLine();
 
             // Ask user for search term
-           
             
             // Perform search operation
             Ricerca ricercaGoogle = new Ricerca();
@@ -29,13 +30,17 @@ public class Main {
             // Assuming ricercaGoogle is an instance of a class that has the eseguiRicerca method
             // and robot, searchText are previously defined in your code
             
-            int posx = Integer.parseInt(datiMap.get("posx").replaceAll(";", "").trim()); // Remove semicolon and trim spaces before parsing
-int posy = Integer.parseInt(datiMap.get("posy").replaceAll(";", "").trim()); // Remove semicolon and trim spaces before parsing
-int pause = Integer.parseInt(datiMap.getOrDefault("pause", "1000").replaceAll(";", "").trim()); // Remove semicolon and trim spaces before parsing
-String testo = datiMap.get("testo"); // Retrieve 'testo' // Default value is 1000
-String clik = datiMap.get("clik"); // Retrieve 'clik' // Default value is 1000
+            int pause = Integer.parseInt(datiMap.getOrDefault("pause", "1000").replaceAll(";", "").trim()); // Remove semicolon and trim spaces before parsing
+            String testo = datiMap.get("testo"); // Retrieve 'testo' // Default value is 1000
+            String clik = datiMap.get("clik"); // Retrieve 'clik' // Default value is 1000
+
+            // Find the icon on the screen
+            IconFinder iconFinder = new IconFinder();
+            Point iconPosition = .findIcon("icon"); // Declare and initialize iconPosition
             
             // Now use these values in your method call
+            int posx = iconPosition.x;
+            int posy = iconPosition.y;
             ricercaGoogle.eseguiRicerca(robot, posx, posy, testo, pause, clik);
 
             // Delay before next action
