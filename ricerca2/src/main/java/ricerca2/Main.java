@@ -10,6 +10,12 @@ public class Main {
 
     public static void main(String[] args) {
         try {
+            int posx=-1;
+            int posy=-1;
+            int pause=-1;
+            String testo = "";
+            String clik=null;
+
              Robot robot = new Robot();
             Scanner sc = new Scanner(System.in);
             Letturadati letturaDati = new Letturadati();
@@ -21,36 +27,41 @@ public class Main {
 
             // Iterate over the list of maps
             for (Map<String, String> datiMap : listOfDatiMaps) {
-               
+                posx=-1;
+                posy=-1;
+                pause=-1;
+                testo = "";
+                clik="";
+                
                 
                 // Assuming ricercaGoogle and robot are already defined
                 System.out.println(letturaDati.lettura()); // Call lettura to initialize datiMap
                 System.out.println(letturaDati.toString());
-                int posx = Integer.parseInt(datiMap.get("posx").replaceAll(";", "").trim());
-                int posy = Integer.parseInt(datiMap.get("posy").replaceAll(";", "").trim());
-                int pause = Integer.parseInt(datiMap.getOrDefault("pause", "1000").replaceAll(";", "").trim());
-                String testo = datiMap.get("testo");
-                String clik = datiMap.get("clik");
+
+            if(datiMap.containsKey("posx"))
+                {posx = Integer.parseInt(datiMap.get("posx").replaceAll(";", "").trim());} 
+            if (datiMap.containsKey("posy"))
+                {posy = Integer.parseInt(datiMap.get("posy").replaceAll(";", "").trim());} 
+            if (datiMap.containsKey("pause"))
+                {pause = Integer.parseInt(datiMap.get("pause").replaceAll(";", "").trim());}
+            if (datiMap.containsKey("testo"))
+                {testo = datiMap.get("testo").replaceAll(";", "").trim();}   
+            if (datiMap.containsKey("clik"))  
+                {clik = datiMap.get("clik").replaceAll(";", "").trim();}  
+           
+
+
+            
+
                 Ricerca ricerca= new Ricerca();
                 ricerca.eseguiRicerca(robot, posx, posy, testo, pause, clik);
-                robot.delay(6000);
+                //robot.delay(pause);
                 
-            // Instantiate Letturadati and read the data into a HashMap
-       
-         
-            // Assuming ricercaGoogle is an instance of a class that has the eseguiRicerca method
-            // and robot, searchText are previously defined in your code
             
-    
-            // Now use these values in your method call
-
-
-            // Delay before next action
-            robot.delay(6000);
+           
 
             // Perform filter operation
-            Filtro filtroGoogle = new Filtro();
-            filtroGoogle.eseguiFiltro(robot, 1505, 345, 1514, 397, 1430, 188);
+            
             // Print completion message
             System.out.println("Ricerca completata!"
             
@@ -61,10 +72,7 @@ public class Main {
            
 
             // Perform filter operation
-            Filtro filtroGoogle = new Filtro();
-            filtroGoogle.eseguiFiltro(robot, 1505, 345, 1514, 397, 1430, 188);
-            // Print completion message
-            System.out.println("Ricerca completata!");
+           
 
             // Close resources
             sc.close();

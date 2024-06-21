@@ -1,4 +1,5 @@
 package ricerca2;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -25,7 +26,8 @@ public class Letturadati {
             String[] blocks = content.split("\\}"); // Assume blocks are separated by "}"
             for (String block : blocks) {
                 block = block.replace("{", "").trim(); // Clean up block
-                if (block.isEmpty()) continue; // Skip empty blocks
+                if (block.isEmpty())
+                    continue; // Skip empty blocks
 
                 Map<String, String> blockMap = new HashMap<>();
                 String[] lines = block.split(";");
@@ -35,16 +37,19 @@ public class Letturadati {
                         if (parts.length == 2) { // Ensure there's a key and a value
                             String key = parts[0].trim();
                             String value = parts[1].trim();
-                            if (key.equals("posxy")) {
-                                // Split posxy into posx and posy
-                                String[] posParts = value.split(",");
-                                if (posParts.length == 2) {
-                                    blockMap.put("posx", posParts[0].trim());
-                                    blockMap.put("posy", posParts[1].trim());
-                                }
-                            } else {
-                                blockMap.put(key, value); // Store in HashMap
-                            }
+                            blockMap.put(key, value);
+                            /*
+                             * if (key.equals("posxy")) {
+                             * // Split posxy into posx and posy
+                             * //String[] posParts = value.split(",");
+                             * //if (posParts.length == 2) {
+                             * // blockMap.put("posx", posParts[0].trim());
+                             * blockMap.put("posy", posParts[1].trim());
+                             * }
+                             * } else {
+                             * // Store in HashMap
+                             * }
+                             */
                         }
                     }
                 }
