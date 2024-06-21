@@ -1,4 +1,11 @@
-posxy=1403,180;
+{posxy=1403,180;
 clik=d;
-testo=abcdefg;
+testo=abcdefg3;
 pause=1000;
+}
+{posxy=1600,400;
+clik=s;
+testo=abcdefg2;
+pause=10;
+}
+

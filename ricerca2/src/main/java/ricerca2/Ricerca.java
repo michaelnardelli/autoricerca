@@ -1,3 +1,4 @@
+package ricerca2;
 
 import java.awt.Robot;
 import java.awt.event.InputEvent;
@@ -45,9 +46,9 @@ if (clik.equals("s")) {
     
             // Click at final position
             System.out.println("Cliccando il mouse nella nuova posizione (" + finalX + ", " + finalY + ")");
-            robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+            robot.mousePress(clikSinitro);
             robot.delay(200); // Delay to ensure click is registered
-            robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+            robot.mouseRelease(clikSinitro);
         } finally {
             // Add the missing closing brace here
         }
