@@ -60,3 +60,9 @@ The `Main` class serves as the entry point of the application. It initializes th
 ## Usage
 
 To use the AutoSearch project, compile and run the `Main` class. Ensure that all necessary data inputs are correctly configured in the `LetturaDati` class. Customize the `Filtro` class as needed to apply specific filtering criteria to your search results.
+if (parts.length == 2) { // Ensure there's a key and a value
+key = parts[0].trim();
+value = parts[1].trim();
+} else {
+     blockMap.put(key, value); // Store in HashMap
+ }
