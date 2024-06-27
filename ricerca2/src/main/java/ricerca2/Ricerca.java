@@ -1,13 +1,11 @@
 package ricerca2;
-
-import java.awt.Robot;
 import java.awt.event.InputEvent;
+import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.awt.AWTException;
 
 public class Ricerca {
-
-    private static int ClikEvent = InputEvent.BUTTON1_DOWN_MASK;
+  private static int ClikEvent = InputEvent.BUTTON1_DOWN_MASK;
 
     public void eseguiRicerca(Robot robot, int initialX, int initialY, String searchText, int pausa, String clik) {
 
@@ -22,12 +20,12 @@ public class Ricerca {
             ClikEvent = -1;
         }
         if (initialX != -1 || initialY != -1) {
-            System.out.println("Spostando il mouse alla posizione iniziale (" + initialX + ", " + initialY + ")");
+           
             robot.mouseMove(initialX, initialY);
         }
 
         // Click at initial position
-        System.out.println("Cliccando il mouse nella posizione (" + initialX + ", " + initialY + ")");
+      
 
         if (ClikEvent != -1) {
             robot.mousePress(ClikEvent);
@@ -36,7 +34,7 @@ public class Ricerca {
 
         }
         if (!searchText.equals("")) {
-            System.out.println("Scrivendo il testo: " + searchText);
+         
             typeString(robot, searchText);
 
         }
@@ -68,11 +66,7 @@ public class Ricerca {
                 robot.keyRelease(keyCode);
                 // robot.delay(50); // Delay between key presses
             } catch (IllegalArgumentException ex) {
-                // If extended key code not found, try direct character
-                robot.keyPress(c);
-                // robot.delay(50); // Ensure key press is long enough
-                robot.keyRelease(c);
-                // robot.delay(50); // Delay between key presses
+                System.out.println("Carattere non supportato: " + c);  
             }
         }
     }
